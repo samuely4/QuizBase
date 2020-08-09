@@ -1,0 +1,31 @@
+<!-- When a user requests to join a class, the owner of the class either accepts or declines -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h2>Requests</h2>
+    <table border="1">
+       <% for(let i = 0; i < key.length; i++) {%>
+         <tr>
+           <td><%= i+1 %>. </td>
+           <td><%= key[i].username %> user wants to join</td>
+           <td><%= key[i].className %> class</td>
+           <td>
+            <form class="" action="/showRequests/accept" method="POST">
+              <button type="submit" name="info" value="<%= key[i].userId %>#<%= key[i].classId %>">Accept</button>
+            </form>
+          </td>
+           <td>
+            <form class="" action="/showRequests/ignore" method="POST">
+              <button type="submit" name="info" value="<%= key[i].userId %>#<%= key[i].classId %>">Ignore</button>
+            </form>
+          </td>
+          </tr>
+       <% } %>
+    </table>
+  </body>
+</html>

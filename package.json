@@ -1,0 +1,20 @@
+{
+  "name": "quizbase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -L app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Connie",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "open": "latest",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.5",
+    "mysql": "^2.16.0"
+  }
+}

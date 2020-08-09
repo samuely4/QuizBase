@@ -1,0 +1,31 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="homepage.css">
+  <!-- <script src="homepage.js"></script> -->
+  <title>Homepage</title>
+</head>
+<body>
+  <!-- <form action="/logincheck" method="POST"> -->
+    <h1>Welcome!</h1>
+    <div class="login-page">
+      <div class="form">
+        <h1>Create Account</h1>
+        <form class="register-form" action="/register" method="POST">
+          <label>
+            Username:
+            <input type="text" placeholder="Username" name="username" pattern=".{5,10}" required title="Username must be 5 to 10 characters">
+          </label>
+          <label>
+            Password:
+            <input type="password" placeholder="Password" name="password" required>
+          </label>
+
+          <button type="submit" name="button">Register</button>
+          <p class ="message"> Already registered? <a href="/signin">Sign In</a></p>
+        </form>
+
+      </div>
+    </div>
+  <!-- </form> -->
+
+</body>

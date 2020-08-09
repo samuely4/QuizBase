@@ -1,0 +1,21 @@
+<!-- Displays the classes from the site except the ones the user is already in -->
+<!-- the form can be linked to the app.get("/showClass") -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1><%= key[0] %></h1>
+    <form class="" action="/displayClass1" method="GET"> <!-- clicks to view the class -->
+      <ul>
+        <!-- NOTE TO SELF: work on displayClass content page -->
+        <% for(let i = 1; i < key.length; i++) {%>
+          <li> <button type="submit" value="<%= key[i].classId %>" name="class"> <%= key[i].name %> </button> </li>
+        <% } %>
+      </ul>
+    </form>
+  </body>
+</html>

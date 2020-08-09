@@ -1,0 +1,40 @@
+<!-- shows the cards of the deck selected from the class -->
+<!-- BACKGROUN CSS WORKS NOW -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1><%= deckInfo[0].deckName %></h1>
+    <form class="" action="/displayClass1" method="GET">
+      <h4>
+        Creator:
+        <button type="submit" name="class" value="<%= deckInfo[0].classId %>"><%= deckInfo[0].className %> Class</button>
+      </h4>
+    </form>
+
+
+    <table border="1">
+      <tr>
+        <th>#</th>
+        <th>Card Name</th>
+        <th>Description</th>
+      </tr>
+
+      <% for(let i = 0; i < key.length; i++) {%>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= key[i].cardName %></td>
+          <td><%= key[i].description %></td>
+         </tr>
+      <% } %>
+
+
+    </table>
+
+  </body>
+</html>

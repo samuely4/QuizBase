@@ -1,0 +1,56 @@
+<!-- displays users profile & ther decks of cards -->
+<html lang="en" dir="ltr">
+  <head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <!-- <h1>Profile</h1> -->
+    <h1> <%= name %> Profile </h1>
+    <br>
+    <table>
+
+      <tr>
+        <form class="" action="/getProfileClass" method="GET">
+          <td></td>
+          <td></td>
+          <td>
+            <label for="class">User Classes: </label>
+            <select id="class" class="" name="chosenClass">
+              <!-- <option value=""> </option> -->
+              <% for(let i = 0; i < classes.length; i++) {%>
+                <option value="<%= classes[i].classId %>"><%= classes[i].name %></option>
+              <% } %>
+            </select>
+          </td>
+          <td><button type="submit" value="<%= userID %>" name="class">View</button></td>
+
+        </form>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Deck Names</th>
+          <th>Creation Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < key.length; i++) {%>
+          <tr>
+            <td><%= i+1 %></td>
+            <form class="" action="/displayCards" method="GET">
+              <td><button type="submit" name="deck" value = "<%= key[i].deckId %>"><%= key[i].name %></button></td>
+              <td><%= key[i].CD %></td>
+            </form>
+
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+  </body>
+</html>

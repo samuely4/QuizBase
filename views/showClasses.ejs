@@ -1,0 +1,50 @@
+<!-- Shows all the classes they are in or own -->
+<!-- WORK ON THE BUTTONS TO WORK!!!!! -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h2>Show Classes:</h2>
+    <label for="classOwn"><b>Classes you own: </b></label>
+    <form class="" action="/showClasses/createClass" method="POST">
+      <button type="submit" name="create" value="<%= userID %>">Create new Class</button>
+    </form>
+
+    <table id="classOwn">
+      <% for(let i = 0; i < own.length; i++) {%>
+        <tr>
+          <td> <%= own[i].name %> </td>
+          <form class="" action="/showClass" method="GET">
+            <td><button type="submit" value="<%= own[i].classId %>" name="class">Edit</button></td>
+          </form>
+          <form class="" action="/showClasses/deleteClass" method="POST">
+            <td><button type="submit" value="<%= own[i].classId %>" name="delete">Delete</button></td>
+          </form>
+
+        </tr>
+      <% } %>
+    </table>
+
+
+    <label for="classJoin"><b>Classes you joined: </b></label>
+    <table id="classJoin">
+      <% for(let i = 0; i < joined.length; i++) {%>
+        <tr>
+          <td> <%= joined[i].name %> </td>
+          <!-- below can be app.get("showClass") -->
+          <form class="" action="/showClass" method="GET">
+            <td><button type="submit" value="<%= joined[i].classId %>" name="class">Go to Class</button></td>
+          </form>
+          <form class="" action="/showClasses/leaveClass" method="POST">
+            <td><button type="submit" value="<%= joined[i].classId %>" name="leave">Leave</button></td>
+          </form>
+
+        </tr>
+      <% } %>
+    </table>
+  </body>
+</html>

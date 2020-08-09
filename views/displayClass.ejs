@@ -1,0 +1,33 @@
+<!-- Displays the class description, name, decks, members -->
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1>Class: <%= classInfo[0].name %></h1>
+    <% if(members.indexOf(user) === -1) {%>
+      <% if(request === true) {%>
+        <form class="" action="/removeRequest" method="POST">
+          <label for="requests">Click to Unregister:  </label><button type="submit" name="request" value="<%= classInfo[0].classId %>" id="requests">Remove Request</button>
+        </form>
+        <h4><em>Description: <%= classInfo[0].description %></em></h4>
+      <% } else if(request === false) {%>
+        <form class="" action="/request" method="POST">
+          <label for="requests">Register to join class: </label><button type="submit" name="request" value="<%= classInfo[0].classId %>" id="requests">Request</button>
+        </form>
+        <h4><em>Description: <%= classInfo[0].description %></em></h4>
+      <% } %>
+    <% } else {%>
+      <h4><em>Description: <%= classInfo[0].description %></em></h4>
+      <form class="" action="/displayClassDeck" method="GET"> <!-- Deck buttons to display the cards in it -->
+        <ol>
+          <% for(let i = 0; i < key.length; i++) {%>
+            <li> <button type="submit" value="<%= key[i].deckId %>" name="deck"> <%= key[i].name %> </button> </li>
+          <% } %>
+        </ol>
+      </form>
+    <% } %>
+  </body>
+</html>

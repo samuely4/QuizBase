@@ -1,0 +1,21 @@
+<!-- Displays all the decks of that topic (ppl can click/select a deck to read the cards) -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1><%= key[0] %></h1>
+    <form class="" action="/displayCards" method="GET">
+      <ol>
+        <% for(let i = 1; i < key.length; i++) {%>
+          <li> <button type="submit" value="<%= key[i].deckId %>" name="deck"> <%= key[i].name %> </button> </li>
+        <% } %>
+      </ol>
+    </form>
+
+
+  </body>
+</html>

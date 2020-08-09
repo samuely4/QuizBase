@@ -1,0 +1,28 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="homepage.css">
+  <script src="homepage.js"></script>
+  <title>Sign In</title>
+</head>
+<body>
+  <h1>Welcome!</h1>
+  <div class="login-page">
+    <div class="form">
+      <h1>Sign In</h1>
+      <form class="login-form" action="/login" method="POST">
+        <label>
+          Username:
+          <input type="text" placeholder="Username" name="username" value="">
+        </label>
+        <label>
+          Password:
+          <input type="password" placeholder="Password" name="password" value="">
+        </label>
+
+        <button type="submit" onclick="getvalue()" value="click" name="button">Sign In</button>
+        <p class ="message"> Not Register? <a href="/">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>

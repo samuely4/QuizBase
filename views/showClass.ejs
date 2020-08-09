@@ -1,0 +1,76 @@
+<!-- display the class selected from the nav "Classes". Limitations apply to members and owner has more power -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <!-- <table> -->
+    <% if(own) {%>
+      <table>
+        <tr>
+          <form class="" action="/showClass/editName" method="POST">
+            <td><input type="text" name="className" value="<%= key[0].name %>"></td>
+            <td><button type="submit" name="edit" value="<%= key[0].classId %>">Edit Class Name</button></td>
+          </form>
+
+          <form class="" action="/showClass/updateTopic" method="POST">
+            <td>
+              <select class="" value="" name="chosenTopic">
+                <% for(let i = topic.length-1; i >= 0; i--) {%>
+                  <% if(key[0].topicId === topic[i].topicId) {%>
+                    <option selected="selected" value="<%= topic[i].topicId %>"><%= topic[i].topicName %></option>
+                  <% } else {%>
+                    <option value="<%= topic[i].topicId %>"><%= topic[i].topicName %></option>
+                  <% } %>
+                <% } %>
+              </select>
+
+            </td>
+            <td><button type="submit" value="<%= key[0].classId %>" name="updateTopic">Select Topic</button></td>
+          </form>
+        </tr>
+        <tr></tr>
+        </table>
+        <table>
+          <tr>
+            <form class="" action="/showClass/updateDescription" method="POST">
+              <td><textarea rows="4" cols="50" name="classDescription" value="<%= key[0].description %>"><%= key[0].description %></textarea></td>
+              <td><button type="submit" value="<%= key[0].classId %>" name="updateDescription">Update Description</button></td>
+
+            </form>
+          </tr>
+        </table>
+
+      <% } else {%>
+        <h1><%= key[0].name %> Class</h1>
+        <h4>Class Description: <em><%= key[0].description %></em></h4>
+
+      <% } %>
+
+      <h3>Decks: </h3>
+      <form class="" action="/createClassDeck" method="post">
+        <button type="submit" name="createDeck" value="<%= key[0].classId %>">Create Deck</button>
+      </form>
+
+      <table>
+        <% for(let i = 0; i < deckInfo.length; i++) {%>
+          <tr>
+            <td><%= deckInfo[i].name %></td>
+            <form class="" action="/showClassDeck" method="GET">
+              <td><button type="submit" value="<%= deckInfo[i].deckId %>" name="edit">Edit</button></td>
+            </form>
+            <form class="" action="/showClass/deleteDeck" method="post">
+            <td><button type="submit" value="<%= deckInfo[i].deckId %>" name="delete">Delete</button></td>
+            </form>
+          </tr>
+        <% } %>
+      </table>
+
+    <!-- </table> -->
+
+
+  </body>
+</html>

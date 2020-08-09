@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1>Dashboard</h1>
+
+    <label for="decks">Explore Decks: </label>
+    <table id="decks">
+      <table border="1">
+      <tbody>
+        <tr>
+          <form class="" action="/displayDecks" method="get">
+            <td><button type="submit" name="box" value="2">Science</button></td>
+            <td><button type="submit" name="box" value="1">Math</button></td>
+            <td><button type="submit" name="box" value="3">Computer Science</button></td>
+            <td><button type="submit" name="box" value="5">Art</button></td>
+            <td><button type="submit" name="box" value="7">Music</button></td>
+            <td><button type="submit" name="box" value="6">History</button></td>
+            <td><button type="submit" name="box" value="4">English</button></td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Explore Classes -->
+    <label for="classes">Explore Classes: </label>
+    <table id="classes">
+      <table border="1">
+      <tbody>
+        <tr>
+          <form class="" action="/classes" method="get">
+            <td><button type="submit" name="box" value="2">Science</button></td>
+            <td><button type="submit" name="box" value="1">Math</button></td>
+            <td><button type="submit" name="box" value="3">Computer Science</button></td>
+            <td><button type="submit" name="box" value="5">Art</button></td>
+            <td><button type="submit" name="box" value="7">Music</button></td>
+            <td><button type="submit" name="box" value="6">History</button></td>
+            <td><button type="submit" name="box" value="4">English</button></td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <h3>Decks: </h3>
+    <form class="" action="/createDeck" method="post">
+      <button type="submit" name="createDeck">Create</button>
+    </form>
+
+      <table>
+        <% for(let i = 0; i < key.length; i++) {%>
+          <tr>
+
+              <td> <%= key[i].name %> </td>
+              <form class="" action="/showDeck" method="GET">
+                <td><button type="submit" value="<%= key[i].deckId %>" name="edit">Edit</button></td>
+              </form>
+              <form class="" action="/dashboard/deleteDeck" method="post">
+              <td><button type="submit" value="<%= key[i].deckId %>" name="delete">Delete</button></td>
+              </form>
+
+            <p></p>
+          </tr>
+
+        <% } %>
+      </table>
+      <h4>Merge Decks: </h4>
+      <p><em>NOTE: In order to merge, the topic of the two decks must be the same!</em></p>
+      <form class="" action="/mergeDecks" method="post">
+        <label for="source">Source: </label>
+        <input id="source" type="text" name="source" value="">
+        <label for="destination">Destination: </label>
+        <input id="destination" type="text" name="destination" value="">
+        <button type="submit" name="button">Merge</button>
+      </form>
+
+  </body>
+</html>

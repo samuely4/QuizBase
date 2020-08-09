@@ -1,0 +1,38 @@
+<!-- shows the cards of the deck selected and the creator -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <h1><%= deckInfo[0].name %></h1>
+    <form class="" action="/profile" method="GET">
+      <h4>
+        Creator:
+        <button type="submit" name="creator" value="<%= deckInfo[0].userId %>"><%= deckInfo[0].username %></button>
+      </h4>
+    </form>
+    <!-- <h4>Creator: <%= deckInfo[0].username %></h4> -->
+
+    <table border="1">
+      <tr>
+        <th>#</th>
+        <th>Card Name</th>
+        <th>Description</th>
+      </tr>
+
+      <% for(let i = 0; i < key.length; i++) {%>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= key[i].cardName %></td>
+          <td><%= key[i].description %></td>
+         </tr>
+      <% } %>
+
+
+    </table>
+
+  </body>
+</html>

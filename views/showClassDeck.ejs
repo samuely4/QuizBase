@@ -1,0 +1,69 @@
+<!-- individual can edit the class decks -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+  </head>
+  <body>
+    <% include partials/header %>
+    <table>
+      <tr>
+        <form class="" action="/showClassDeck/editName" method="POST">
+          <td><input type="text" name="deckName" value="<%= deckName %>"></td>
+          <td><button type="submit" value="<%= deckID %>" name="edit">Edit Deck Name</button></td>
+        </form>
+
+        <form class="" action="/showClassDeck/updateTopic" method="POST">
+          <td>
+            <select class="" value="" name="chosenTopic">
+              <% for(let i = topic.length-1; i >= 0; i--) {%>
+                <% if(topicID===topic[i].topicId) {%>
+                  <option selected="selected" value="<%= topic[i].topicId %>"><%= topic[i].topicName %></option>
+                <% } else {%>
+                  <option value="<%= topic[i].topicId %>"><%= topic[i].topicName %></option>
+                <% } %>
+
+              <% } %>
+
+            </select>
+
+          </td>
+          <td><button type="submit" value="<%= deckID %>" name="updateTopic">Select Topic</button></td>
+        </form>
+      </tr>
+    </table>
+
+    <br>
+    <table border="1">
+      <tr>
+        <th>#</th>
+        <th>Card Name</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% for(let i = 0; i < key.length; i++) {%>
+        <tr>
+          <form class="" action="/showClassDeck/updateCard" method="post">
+            <td><%= i+1 %></td>
+            <td><textarea rows="2" cols="40" name="cardName" value="<%= key[i].cardName %>"><%= key[i].cardName %></textarea></td>
+            <td><textarea rows="4" cols="50" name="cardDescription" value="<%= key[i].description %>"><%= key[i].description %></textarea></td>
+            <td><button type="submit" name="cardId" value="<%= key[i].cardId %>">Save</button></td>
+
+          </form>
+
+          <td><form class="" action="/showClassDeck/deleteCard" method="POST">
+            <button type="submit" value="<%= key[i].cardId %>" name="delete">Delete</button>
+          </form></td>
+         </tr>
+
+      <% } %>
+
+    </table>
+    <form class="" action="/showClassDeck/addCard" method="POST">
+      <button type="submit" value="<%= deckID %>" name="add">Add Card</button>
+    </form>
+  </body>
+</html>
